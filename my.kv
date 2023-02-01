@@ -1,0 +1,442 @@
+WindowManager:
+
+    StartScreen:
+    EnterCredentialsScreen:
+    ConnectScreen:
+    PartnerScreen:
+    HomeScreen:
+    SettingsScreen:
+    EnterNameScreen:
+    EnterChatID:
+
+
+<StartScreen>:
+    name: "Start"
+
+    MDFloatLayout:
+        md_bg_color: (245/255, 245/255, 220/255, 1)
+
+<EnterCredentialsScreen>:
+    name: "Credential"
+    nameInput: nameInput
+    chatInput: chatInput
+
+    MDFloatLayout:
+        md_bg_color: (245/255, 245/255, 220/255, 1)
+
+        MDLabel:
+            text: "Enter necessities"
+            color: (0, 0, 0, 1)
+            font_size: "30sp"
+            width: "250sp"
+            size_hint_x: None
+            pos_hint: {"center_x": 0.5, "center_y": 0.63}
+
+        MDTextField:
+            id: nameInput
+            hint_text: "Enter name"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.53}
+            icon_right: "account-plus"
+            width: "300sp"
+            size_hint_x: None
+
+        MDTextField:
+            id: chatInput
+            hint_text: "Enter chatID"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.44}
+            icon_right: "chat"
+            width: "300sp"
+            size_hint_x: None
+
+        MDRoundFlatButton:
+            text: "Send"
+            font_size: "20sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            on_press: root.submitName()
+
+
+<EnterNameScreen>:
+    name: "Name"
+    nameInput: nameInput
+
+    MDFloatLayout:
+        md_bg_color: (245/255, 245/255, 220/255, 1)
+        size: root.width, root.height
+        MDLabel:
+            text: "Enter your name"
+            color: (0, 0, 0, 1)
+            font_size: "30sp"
+            width: "250sp"
+            size_hint_x: None
+            pos_hint: {"center_x": 0.5, "center_y": 0.55}
+
+        MDTextField:
+            id: nameInput
+            hint_text: "name"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.45}
+            icon_right: "account-edit"
+            width: "300sp"
+            size_hint_x: None
+
+        MDRoundFlatButton:
+            text: "Send"
+            font_size: "20sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            on_press: root.submitName()
+
+        MDIconButton:   #GoToSettings
+            icon: "arrow-left-thick"
+            icon_size: "64sp"
+            pos_hint: {"center_x": 0.05, "center_y": 0.9}
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = "Settings"
+
+
+
+<EnterChatID>:
+    name: "ChatID"
+    idInput: idInput
+
+    MDFloatLayout:
+        md_bg_color: (245/255, 245/255, 220/255, 1)
+        size: root.width, root.height
+        MDLabel:
+            text: "Enter your chat ID"
+            color: (0, 0, 0, 1)
+            font_size: "30sp"
+            width: "250sp"
+            size_hint_x: None
+            pos_hint: {"center_x": 0.5, "center_y": 0.55}
+
+        MDTextField:
+            id: idInput
+            hint_text: "ID"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.45}
+            icon_right: "chat-plus"
+            width: "300sp"
+            size_hint_x: None
+
+        MDRoundFlatButton:
+            text: "Send"
+            font_size: "20sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            on_press: root.submitID()
+
+        MDIconButton:   #GoToSettings
+            icon: "arrow-left-thick"
+            icon_size: "64sp"
+            pos_hint: {"center_x": 0.05, "center_y": 0.9}
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = "Settings"
+
+
+<ConnectScreen>:
+    name: "Connect"
+    code_input: code_input
+
+    MDFloatLayout:
+        md_bg_color: (245/255, 245/255, 220/255, 1)
+        size: root.width, root.height
+
+        MDLabel:
+            text: "Connect to partner"
+            color: (0, 0, 0, 1)
+            font_size: "30sp"
+            width: "250sp"
+            size_hint_x: None
+            pos_hint: {"center_x": 0.5, "center_y": 0.55}
+
+        MDTextField:
+            id: code_input
+            hint_text: "Enter code"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.45}
+            icon_right: "heart-plus"
+            width: "300sp"
+            size_hint_x: None
+
+        MDBottomAppBar:
+            md_bg_color: (255/255, 181/255, 167/255, 1)
+            MDToolbar:
+                icon_color: (255/255, 181/255, 167/255, 1)
+                icon: "account"
+                type: "bottom"
+                mode: "center"
+                on_action_button:
+                    root.manager.transition.direction = "right"
+                    root.manager.current = "Home"
+
+
+        MDRoundFlatButton:
+            text: "Connect"
+            font_size: "20sp"
+            text_color: (255/255, 181/255, 167/255, 1)
+            line_color: (255/255, 181/255, 167/255, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            on_press: root.submitCode()
+
+
+<PartnerScreen>:
+    name: "Partner"
+    partner_mood: partner_mood
+    partner_name: partner_name
+
+    MDFloatLayout:
+        md_bg_color: (245/255, 245/255, 220/255, 1)
+        size: root.width, root.height
+
+        MDLabel:
+            id: partner_name
+            text: ""
+            font_size: "32sp"
+            color: (0, 0, 0, 1)
+            width: "250sp"
+            size_hint_x: None
+            pos_hint: {"center_x": 0.45, "center_y": 0.9}
+
+        Image:
+            id: partner_mood
+            source: "Mood/Happy.png"
+            width: "300sp"
+            size_hint_y: 0.3
+            allow_stretch: True
+            pos_hint: {"center_x": 0.5, "center_y": 0.67}
+
+
+        MDFillRoundFlatButton:     #Hug
+            text: "Hug"
+            md_bg_color: (159/255, 186/255, 238/255, 1)
+            font_size: "25sp"
+            pos_hint: {"center_x": 0.2, "center_y": 0.37}
+            on_press: root.sendHug()
+
+        MDFillRoundFlatButton:     #Punch
+            text: "Punch"
+            md_bg_color: (251/255, 136/255, 136/255, 1)
+            font_size: "25sp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.37}
+            on_press: root.sendPunch()
+
+        MDFillRoundFlatButton:     #Touch
+            text: "Touch"
+            md_bg_color: (189/255, 223/255, 173/255, 1)
+            font_size: "25sp"
+            pos_hint: {"center_x": 0.8, "center_y": 0.37}
+            on_press: root.sendTouch()
+
+        MDFillRoundFlatButton:     #Tickle
+            text: "Tickle"
+            md_bg_color: (238/255, 206/255, 159/255, 1)
+            font_size: "25sp"
+            pos_hint: {"center_x": 0.35, "center_y": 0.23}
+            on_press: root.sendTickle()
+
+        MDFillRoundFlatButton:     #Kiss
+            text: "Kiss"
+            md_bg_color: (238/255, 159/255, 187/255, 1)
+            font_size: "25sp"
+            pos_hint: {"center_x": 0.65, "center_y": 0.23}
+            on_press: root.sendKiss()
+
+        MDFillRoundFlatIconButton
+            id: menu_
+            text: "Request"
+            icon: "plus-circle"
+            md_bg_color: (255/255, 181/255, 167/255, 1)
+            font_size: "11sp"
+            pos_hint: {"center_x": 0.83, "center_y": 0.9}
+            on_press: root.open_dropdown()
+
+        MDBottomAppBar:
+            md_bg_color: (255/255, 181/255, 167/255, 1)
+            MDToolbar:
+                icon_color: (255/255, 181/255, 167/255, 1)
+                icon: "account"
+                type: "bottom"
+                mode: "center"
+                on_action_button:
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = "Home"
+
+
+<HomeScreen>:
+    name: "Home"
+    greeting_name: greeting_name
+    current_mood: current_mood
+    dropdown: dropdown
+
+    MDFloatLayout:
+        size: root.width, root.height
+        md_bg_color: (245/255, 245/255, 220/255, 1)
+
+
+        MDLabel:
+            id: greeting_name
+            text: ""
+            font_size: "32sp"
+            color: (0, 0, 0, 1)
+            width: "250sp"
+            size_hint_x: None
+            pos_hint: {"center_x": 0.45, "center_y": 0.9}
+
+
+        MDIconButton: #Settings
+            icon: "cog"
+            icon_size: "64sp"
+            pos_hint: {"center_x": 0.9, "center_y": 0.9}
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.current = "Settings"
+
+
+        MDFillRoundFlatButton:  #MoodButton
+            id: dropdown
+            text: "Mood"
+            font_size: "40sp"
+            elevation: 10
+            md_bg_color: (135/255, 193/255, 235/255, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.385}
+            on_press: root.showMoods()
+
+        MDBottomAppBar:
+            md_bg_color: (255/255, 181/255, 167/255, 1)
+            MDToolbar:
+                icon_color: (255/255, 181/255, 167/255, 1)
+                icon: "heart-multiple"
+                type: "bottom"
+                mode: "center"
+                on_action_button:
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = "Partner"
+
+
+        Image:
+            id: current_mood
+            source: "Mood/Happy.png"
+            width: "25sp"
+            size_hint_y: 0.3
+            allow_stretch: True
+            pos_hint: {"center_x": 0.5, "center_y": 0.67}
+
+
+
+<SettingsScreen>:
+    name: "Settings"
+    partner_name: partner_name
+    username: username
+    user_id: user_id
+    chat_id: chat_id
+
+    MDFloatLayout:
+        size: root.width, root.height
+        md_bg_color: (245/255, 245/255, 220/255, 1)
+
+
+        Label:
+            text: "Profile"
+            font_size: "64sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.9}
+
+
+
+        Label:
+            text: "My partner"
+            font_size: "32sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.32, "center_y": 0.8}
+
+        Label:
+            id: partner_name
+            text: ""
+            font_size: "16sp"
+            color: (0, 0, 0, 0.7)
+            pos_hint: {"center_x": 0.32, "center_y": 0.73}
+
+        MDIconButton:
+            icon: "settings-helper"
+            user_font_size: "55sp"
+            pos_hint: {"center_x": 0.9, "center_y": 0.77}
+            on_press: root.edit_partner()
+
+
+        Label:
+            text: "My name"
+            font_size: "32sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.32, "center_y": 0.63}
+
+        Label:
+            id: username
+            text: ""
+            font_size: "16sp"
+            color: (0, 0, 0, 0.7)
+            pos_hint: {"center_x": 0.32, "center_y": 0.56}
+
+        MDIconButton:
+            icon: "pencil-outline"
+            user_font_size: "30sp"
+            pos_hint: {"center_x": 0.9, "center_y": 0.59}
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.current = "Name"
+
+        Label:
+            text: "Your chat ID"
+            font_size: "32sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.32, "center_y": 0.47}
+
+        Label:        #Chat ID
+            id: chat_id
+            text: ""
+            font_size: "16sp"
+            color: (0, 0, 0, 0.7)
+            pos_hint: {"center_x": 0.32, "center_y": 0.40}
+
+        MDIconButton:
+            icon: "pencil-outline"
+            user_font_size: "30sp"
+            pos_hint: {"center_x": 0.9, "center_y": 0.43}
+            on_press:
+                root.manager.transition.direction = 'left'
+                root.manager.current = "ChatID"
+
+        Label:
+            text: "Your connect ID"
+            font_size: "32sp"
+            color: (0, 0, 0, 1)
+            pos_hint: {"center_x": 0.32, "center_y": 0.3}
+
+        Label:    #Machine ID
+            id: user_id
+            text: ""
+            font_size: "16sp"
+            color: (0, 0, 0, 0.7)
+            pos_hint: {"center_x": 0.42, "center_y": 0.23}
+
+
+        MDIconButton:   #GoToHome
+            icon: "arrow-left-thick"
+            icon_size: "64sp"
+            pos_hint: {"center_x": 0.05, "center_y": 0.9}
+            on_press:
+                root.manager.transition.direction = 'right'
+                root.manager.current = "Home"
+
+
+        MDRectangleFlatButton:      #Delete account btn
+            text: "Delete account"
+            pos_hint: {"center_x": 0.5, "center_y": 0.07}
+            text_color: 1, 0, 0, 1
+            line_color: 1, 0, 0, 1
+            on_press: root.delete_account()
